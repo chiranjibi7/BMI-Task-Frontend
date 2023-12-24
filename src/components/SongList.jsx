@@ -4,10 +4,14 @@ import { CiMenuBurger } from "react-icons/ci";
 import { Dropdown } from "antd";
 import { useDispatch,useSelector } from 'react-redux';
 import { setSongFilterParam } from "../slices/songSlice";
+import { useNavigate } from "react-router";
 
 function SongList() {
+
   const dispatch=useDispatch();
   const {isLoading, songs}=useSelector(state=>state.song);
+
+  const navigate=useNavigate();
 
   const [songTitle, setSongTitle]=useState(null);
 
@@ -36,7 +40,7 @@ function SongList() {
       </div>
 
       <div className="self-end">
-        <RiShareBoxLine size={23} className="hover:cursor-pointer" />
+        <RiShareBoxLine size={23} className="hover:cursor-pointer" onClick={()=>navigate("/artistdetail")}/>
       </div>
     </div>
   );

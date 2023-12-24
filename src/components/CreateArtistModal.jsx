@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { Modal, Button, InputNumber, Input, Spin,message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setArtistRequestObj, postArtist, clearArtistRequestObj} from "../slices/artistSlice";
@@ -15,7 +15,7 @@ function CreateArtistModal({ isModalOpen, handleCancel }) {
             type: 'success',
             content: 'Artist created',
           })
-        } else {
+        } else{
           messageApi.open({
             type: 'error',
             content: 'Error occoured',
