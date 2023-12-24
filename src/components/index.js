@@ -4,6 +4,7 @@ import ArtistLists from "./ArtistLists";
 import SongDetails from "./SongDetails";
 import SongList from "./SongList";
 import SongLyrics from "./SongLyrics";
+import CreateArtistModal from "./CreateArtistModal";
 
 export {
     Artist,
@@ -11,5 +12,6 @@ export {
     ArtistLists,
     SongDetails,
     SongList,
-    SongLyrics
+    SongLyrics,
+    CreateArtistModal
 }
