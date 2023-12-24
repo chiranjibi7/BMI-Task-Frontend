@@ -55,6 +55,7 @@ function ArtistLists() {
 
   return (
     <div className='h-95vh bg-neutral-200 w-1/3 rounded-md flex flex-col flex-nowrap relative py-4'>
+        <p className='text-center font-bold py-1'>Artists List</p>
        <div className='w-full grow overflow-y-auto mb-14 flex flex-col items-center gap-4 scroll-smooth scrollbar'>
         {isLoading && <Spin size="large" className="mt-15"/>}
         {artists && artists.map(artist=>{
