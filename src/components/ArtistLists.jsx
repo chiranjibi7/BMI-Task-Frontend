@@ -3,6 +3,7 @@ import Artist from './Artist';
 import {Button,Spin} from "antd";
 import {useDispatch,useSelector} from "react-redux";
 import { fetchArtists } from '../slices/artistSlice';
+import { fetchSongsByArtist, clearSongs } from '../slices/songSlice';
 
 function ArtistLists() {
   const dispatch=useDispatch();
@@ -15,11 +16,13 @@ function ArtistLists() {
   },[]);
 
   const handleCardSelection=(_id)=>{
+    dispatch(clearSongs());
     if(selectedCard===_id){
      setSelectedCard(null);
     } else{
      setSelectedCard(_id);
     }
+    dispatch(fetchSongsByArtist(_id));
    };
 
   return (
