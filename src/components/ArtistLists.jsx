@@ -1,8 +1,8 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState, useMemo} from 'react';
 import Artist from './Artist';
 import {Button,Spin,message} from "antd";
 import {useDispatch,useSelector} from "react-redux";
-import { fetchArtists, removeArtist } from '../slices/artistSlice';
+import { fetchArtists, removeArtist, clearArtistRemoveResponse } from '../slices/artistSlice';
 import { fetchSongsByArtist, clearSongs} from '../slices/songSlice';
 import CreateArtistModal from './CreateArtistModal';
 
@@ -16,21 +16,25 @@ function ArtistLists() {
 
   const [messageApi, contextHolder] = message.useMessage();
 
+  console.log(artistRemoveResponse)
+
   useEffect(()=>{
     dispatch(fetchArtists());
+    dispatch(clearArtistRemoveResponse());
   },[artistCreateResponse,artistRemoveResponse]);
 
   useEffect(()=>{
-    if(artistRemoveResponse){
-      messageApi.open({
-        type: 'success',
-        content: `${artistRemoveResponse.message}`,
-      })
-    } else {
+    if(!artistRemoveResponse) return;
+    else if(artistRemoveResponse?.status==404 || artistRemoveResponse?.status==500){
       messageApi.open({
         type: 'error',
-        content: 'Error occoured',
+        content: `${artistRemoveResponse?.data?.message}`,
       });
+    } else{
+      messageApi.open({
+        type: 'success',
+        content: `${artistRemoveResponse?.data?.message}`,
+      })
     }
 },[artistRemoveResponse]);
 

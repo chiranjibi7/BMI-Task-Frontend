@@ -22,7 +22,7 @@ export const deleteArtist=async(payload)=>{
     try {
         const artistId=payload;
         const response=await axios.delete(`http://localhost:3001/api/artists/${artistId}`);
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error.message);
     }

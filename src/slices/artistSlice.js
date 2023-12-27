@@ -30,6 +30,9 @@ const artistSlice=createSlice({
                 nationality:"",
                 age:""
             };
+        },
+        clearArtistRemoveResponse:(state)=>{
+            state.artistRemoveResponse=null;
         }
     },
     extraReducers:(builder)=>{
@@ -62,5 +65,5 @@ const artistSlice=createSlice({
     }
 });
 
-export const {setArtistRequestObj, clearArtistRequestObj}=artistSlice.actions;
+export const {setArtistRequestObj, clearArtistRequestObj,clearArtistRemoveResponse}=artistSlice.actions;
 export default artistSlice.reducer;
